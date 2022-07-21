@@ -139,7 +139,7 @@ var displaySearchHistory = function () {
   var historyList = document.querySelector("#history-list");
   historyList.innerHTML = "";
   for (var i = 0; i < previousHistory.length; i++) {
-    var historyItem = document.createElement("li");
+    var historyItem = document.createElement("ul");
     historyItem.textContent = previousHistory[i];
     historyList.appendChild(historyItem);
   }
