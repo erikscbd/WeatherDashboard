@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
     <title>Document</title>
-</head>
+  </head>
 
-
-<body class="body">
-
+  <body class="body">
     <section class="center-align">
-        <h2 class="header-font">Weather API HW</h2>
-        <br>
-        <form id="weather-form">
-            <label class="active" for="weather-forms">Enter City</label>
-            <input type="text" id="city" class="validate center-align input-font">
-           
-            <button type="submit" class="btn">Check Weather</button>
-        </form>
+      <h2 class="header-font">Weather API HW</h2>
+      <br />
+      <form id="weather-form">
+        <label class="active" for="weather-forms">Enter City</label>
+        <input type="text" id="city" class="validate center-align input-font" />
 
-       
+        <button type="submit" class="btn">Check Weather</button>
+      </form>
     </section>
     <main>
-        <section id="city-weather-display">
+      <section id="city-weather-display"></section>
 
-        </section>
+      
+      </section>
+      <section id="daily-weather-display"></section>
 
+      
+    </section>
+    <section id="history-list"></section>
+
+      
+</section>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>

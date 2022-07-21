@@ -45,9 +45,14 @@ margin: auto;
    
      .card {
  flex: 1 100%;
-        height: 80px;
+        
 display: flex;
 align-items: center;
 justify-content: space-around;
-
+max-width:50%;
+min-width:50%;
+     }
+     #daily-weather-display {
+        display: flex;
+        flex-wrap: wrap;
      }

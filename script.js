@@ -1,6 +1,7 @@
 var weatherFormEl = document.querySelector("#weather-form");
 var cityNameEL = document.querySelector("#city");
 var weatherSection = document.querySelector("#city-weather-display");
+var dailySection = document.querySelector("#daily-weather-display");
 var btn = document.querySelector(".btn");
 
 btn.addEventListener("click",function(event) {
@@ -31,17 +32,66 @@ var formSubmitHandler = function (event) {
 
 var getCityWeather = function (city) {
   var apikey = "d42360dd80194eb3d86e1aac7890342a";
-  var requestURl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=d42360dd80194eb3d86e1aac7890342a';
+  var requestURl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=d42360dd80194eb3d86e1aac7890342a&units=imperial';
 
     // var encodedUrl = encodeURI(requestURl);
 
-  console.log(requestURl);
+  //console.log(requestURl);
   fetch(requestURl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
 
           console.log(data);
+          var lat = data.coord.lat;
+          var long = data.coord.lon;
+
+          fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + long + '&appid=d42360dd80194eb3d86e1aac7890342a&units=imperial')
+          .then(function(apiData){
+            if(apiData.ok){
+              var previousHistory = JSON.parse(localStorage.getItem("history")) || [];
+              previousHistory.push(city);
+              localStorage.setItem("history", JSON.stringify(previousHistory));
+              displaySearchHistory();
+              return apiData.json();
+            }
+          }).then(function(apiResults){
+            console.log(apiResults);
+            weatherSection.innerHTML = `<div class="row">
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Current</span>
+                        <p id="city-name">${city}</p>
+                        <p>Temperature: ${apiResults.current.temp}</p>
+                        <p>Humidity: ${apiResults.current.humidity}</p>
+                        <p>Wind Speed: ${apiResults.current.wind_speed}</p>
+                        <p>UV Index: ${apiResults.current.uvi}</p>
+                        <p>Description: ${apiResults.current.weather[0].description}
+                        <img src="http://openweathermap.org/img/wn/${apiResults.current.weather[0].icon}@2x.png" /></p>
+                    </div>
+                </div>
+            </div>`
+            var dailyTemplate = "";
+            for(var i = 0; i < apiResults.daily.length; i++){
+              dailyTemplate += `<div class="col  m3">
+              <div class="card">
+                  <div class="card-content">
+                  
+                      <span class="card-title">Daily</span>
+                      <p>Temperature: ${apiResults.daily[i].temp.max}</p>
+                      <p>Humidity: ${apiResults.daily[i].humidity}</p>
+                      <p>Wind Speed: ${apiResults.daily[i].wind_speed}</p>
+                      <p>UV Index: ${apiResults.daily[i].uvi}</p>
+                      <p>Description: ${apiResults.daily[i].weather[0].description}
+                      <img src="http://openweathermap.org/img/wn/${apiResults.daily[i].weather[0].icon}@2x.png" /></p>
+                      </div>
+                </div>
+            </div>`
+            }
+            dailySection.innerHTML = dailyTemplate;
+          })
+
         })
         // for (let i = 0; i <= data.length; i++) {
         //   displayWeather(data, city);
@@ -84,18 +134,21 @@ var getCityWeather = function (city) {
     });
 };
 
-// for (let i = 0; i <= data.length; i++) {
-//   var displayWeather = function (data) {
-//     var weatherEL = document.createElement("h3");
-//     weatherEL.textContent = data.weather[0].description;
-//     weatherEL.textContent = data.main.temp;
-
-//     weatherSection.appendChild(weatherEL);
-//   };
-// }
+var displaySearchHistory = function () {
+  var previousHistory = JSON.parse(localStorage.getItem("history")) || [];
+  var historyList = document.querySelector("#history-list");
+  historyList.innerHTML = "";
+  for (var i = 0; i < previousHistory.length; i++) {
+    var historyItem = document.createElement("li");
+    historyItem.textContent = previousHistory[i];
+    historyList.appendChild(historyItem);
+  }
+}
 
 weatherFormEl.addEventListener("submit", formSubmitHandler);
 
 $(document).ready(function () {
   M.updateTextFields();
 });
+
+displaySearchHistory()
