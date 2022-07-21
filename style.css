@@ -10,6 +10,7 @@
 }
 .header-font {
   padding-bottom: 20px;
+  font-family: 'Kanit', sans-serif;
 }
 
 .input-field {
@@ -39,10 +40,20 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  max-width: 50%;
   min-width: 50%;
+  padding: 10px;
 }
+#city-weather-display {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 50%;
+  padding: 10px;
+}
+
 #daily-weather-display {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
