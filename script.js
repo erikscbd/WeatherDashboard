@@ -93,38 +93,7 @@ var getCityWeather = function (city) {
           })
 
         })
-        // for (let i = 0; i <= data.length; i++) {
-        //   displayWeather(data, city);
-        //   console.log(data);
-
-
-        //   var tempCard = document.createElement('div');
-        //                 tempCard.classList = 'card horizontal teal';
-
-        //                 var tempDescription = document.createElement('p');
-        //                 var tempCurrent = document.createElement('p');
-        //                 var tempMin = document.createElement('p');
-        //                 var tempMax = document.createElement('p');
-
-        //                 tempCurrent.textContent = 'Temperature: ' + convertToF(weatherData.main.temp) + ' ';
-
-        //                 tempMin.textContent = 'Low: ' + convertToF(weatherData.main.temp_min) + ' ';
-
-        //                 tempMax.textContent = 'Max: ' + convertToF(weatherData.main.temp_max) + ' ';
-
-        //                 tempDescription.textContent = weatherData.weather[0].description + ' ';
-
-
-        //                 weatherSection.appendChild(tempCard);
-        //                 tempCard.appendChild(tempCurrent);
-        //                 tempCard.appendChild(tempMax);
-        //                 tempCard.appendChild(tempMin);
-        //                 tempCard.appendChild(tempDescription);
-
-                       
-
-
-        // }});
+       
       } else {
         alert("Error: " + response.statusText);
       }
