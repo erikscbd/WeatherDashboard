@@ -1,58 +1,48 @@
 .body {
+  background-color: #05668d;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-    background-color: #05668D;
-    display: flex;
-       min-height: 100vh;
-       flex-direction: column;
-   
-   }
+.active {
+  text-align: center;
+}
+.header-font {
+  padding-bottom: 20px;
+}
 
-   .active {
-text-align: center;
+.input-field {
+}
+.input-font {
+  font-family: "Roboto", sans-serif;
+}
 
-   }
-   .header-font {
-   
-       
-       padding-bottom: 20px;
-   }
-
-   .input-field {
-
-
-   }
-   .input-font {
-   
-       font-family: 'Roboto', sans-serif;
-   }
-   
-   /* .body {
+/* .body {
    
        display: flex;
        min-height: 100vh;
        flex-direction: column;
    } */
-   
-   .main {
-       flex: 1 0 auto;
-   }
-   
 
-     .center-align {
-margin: auto;
-        
-     }
-   
-     .card {
- flex: 1 100%;
-        
-display: flex;
-align-items: center;
-justify-content: space-around;
-max-width:50%;
-min-width:50%;
-     }
-     #daily-weather-display {
-        display: flex;
-        flex-wrap: wrap;
-     }
+.main {
+  flex: 1 0 auto;
+}
+
+.center-align {
+  margin: auto;
+}
+
+.card {
+  flex: 1 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 50%;
+  min-width: 50%;
+}
+#daily-weather-display {
+  display: flex;
+  flex-wrap: wrap;
+}
